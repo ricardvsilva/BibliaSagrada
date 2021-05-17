@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:id="@+id/txtLinha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 " />
+
+    <TextView
+        android:id="@+id/txtTestamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2 " />
+
+    <TextView
+        android:id="@+id/txtLivro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3 " />
+
+    <TextView
+        android:id="@+id/txtCapitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4 " />
+
+    <TextView
+        android:id="@+id/txtVersiculo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5 " />
+
+    <TextView
+        android:id="@+id/txtPalavra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6 " />
+
+</LinearLayout>
