@@ -10,8 +10,6 @@ class BancoDeDados(context:Context) : SQLiteOpenHelper(context, DB_NAME, null, V
 
     override fun onCreate(db: SQLiteDatabase?) {
 
-
-
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -32,14 +30,28 @@ class BancoDeDados(context:Context) : SQLiteOpenHelper(context, DB_NAME, null, V
         }
 
         var cliente = Linha(
-            cursor.getString(0).toInt(),
+            cursor.getInt(0),
             cursor.getString(1),
             cursor.getString(2),
-            cursor.getString(3).toInt(),
-            cursor.getString(4).toInt(),
-            cursor.getString(5),
+            cursor.getInt(3),
+            cursor.getInt(4),
+            cursor.getString(5)
         )
-        return cursor.getString(5)
+
+        var linhaParaMostrar:String =  cursor.getInt(3).toString()+"/"+ cursor.getInt(4).toString() +"-"+ cursor.getString(5)
+
+        /*var cliente = Linha(
+            cursor.getString(0).toInt(),    // LINHA - INT
+            cursor.getString(1),            // TESTAMENTO - STRING
+            cursor.getString(2),            // LIVRO - STRING
+            cursor.getString(3).toInt(),    // CAPÍTULO - INT
+            cursor.getString(4).toInt(),    // VERSÍCULO - INT
+            cursor.getString(5)             // PALAVRA - STRING
+        )*/
+
+        //return cliente.toString()
+        //return cursor.getString(5)
+        return linhaParaMostrar
     }
 
     companion object{

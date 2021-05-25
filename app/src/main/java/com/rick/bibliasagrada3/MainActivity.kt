@@ -5,8 +5,6 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,16 +28,17 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this,RecyclerView.VERTICAL,false)
         val user = ArrayList<Linha>()
 
-        val palavra:String = db.seleciona(31097).toString()
+        var i=1
 
-        user.add(Linha(1," Belal Khan ", " Ranchi", 1,1," India"))
-        user.add(Linha(2," Ricardo Silva ", " São Paulo",2,2, " ${palavra}"))
-        user.add(Linha(3, " Camila Gomes ", " São Paulo ",3,3, " Brasil"))
-        user.add(Linha(4, " Amir Furhlang ", " Tampa ", 4,4," USA"))
-        user.add(Linha(5," Greg Willians ", " Virginia ", 5,5," USA "))
+        while(i<=50){
+            val palavra1:String = db.seleciona(i).toString()
+            user.add(Linha(1,1," ${palavra1}"))
+            i++
+        }
         val adapter = BibliaAdapter(user)
         recyclerView.adapter = adapter
     }
+
     private fun iniciaBancoDeDados() {
         mBancoDeDados = BancoDeDados(this)
         val database: File = applicationContext.getDatabasePath(BancoDeDados.DB_NAME)
@@ -52,6 +51,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun copiaBanco(context: Context): Boolean {
         return try {
             // inp recebe endereço banco externo
@@ -79,13 +79,16 @@ class MainActivity : AppCompatActivity() {
             false
         }
     }
+
     private fun alert(s: String) {
         Toast.makeText(this, s, Toast.LENGTH_LONG).show()
     }
+
     fun AcaoBotao(view: View) {
         iniciaBancoDeDados()
         Toast.makeText(this, "Apertado",Toast.LENGTH_SHORT).show()
     }
+
     fun SelectAndShow(view: View) {
         /*val txtBanco:TextView = findViewById(R.id.txtBanco)
         txtBanco.text = db.seleciona(33)*/

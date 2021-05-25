@@ -6,7 +6,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     tools:showIn="@layout/activity_main">
-
+<!--
     <TextView
         android:id="@+id/txtLinha"
         android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
         android:id="@+id/txtVersiculo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5 " />
+        android:text="5 " /> -->
 
     <TextView
         android:id="@+id/txtPalavra"

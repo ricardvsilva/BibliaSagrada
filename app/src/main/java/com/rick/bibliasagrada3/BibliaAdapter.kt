@@ -19,7 +19,7 @@ class BibliaAdapter(private val line: ArrayList<Linha>) : RecyclerView.Adapter<B
         //holder.txtRcvTestamento.text = linha.testamento
         //holder.txtRcvLivro.text = linha.livro
         //holder.txtRcvCapitulo.text = linha.capitulo.toString()
-        holder.txtRcvVersiculo.text = linha.versiculo.toString()
+        //holder.txtRcvVersiculo.text = linha.versiculo.toString()
         holder.txtRcvPalavra.text = linha.palavra
     }
 
@@ -31,8 +31,8 @@ class BibliaAdapter(private val line: ArrayList<Linha>) : RecyclerView.Adapter<B
         //val txtRcvLinha = itemView.findViewById(R.id.txtLinha) as TextView
         //val txtRcvTestamento = itemView.findViewById(R.id.txtTestamento) as TextView
         //val txtRcvLivro = itemView.findViewById(R.id.txtLivro) as TextView
-        val txtRcvCapitulo = itemView.findViewById(R.id.txtCapitulo) as TextView
-        val txtRcvVersiculo = itemView.findViewById(R.id.txtVersiculo) as TextView
+        //val txtRcvCapitulo = itemView.findViewById(R.id.txtCapitulo) as TextView
+        //val txtRcvVersiculo = itemView.findViewById(R.id.txtVersiculo) as TextView
         val txtRcvPalavra = itemView.findViewById(R.id.txtPalavra) as TextView
     }
 
