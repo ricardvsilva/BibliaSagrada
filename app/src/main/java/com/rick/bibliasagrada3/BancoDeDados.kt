@@ -16,7 +16,7 @@ class BancoDeDados(context:Context) : SQLiteOpenHelper(context, DB_NAME, null, V
         TODO("Not yet implemented")
     }
 
-    fun seleciona(codigo:Int): String? {
+    fun selectToRecycler(codigo:Int): String? {
 
         val db:SQLiteDatabase = this.readableDatabase
         var cursor: Cursor?
@@ -52,6 +52,44 @@ class BancoDeDados(context:Context) : SQLiteOpenHelper(context, DB_NAME, null, V
         //return cliente.toString()
         //return cursor.getString(5)
         return linhaParaMostrar
+    }
+
+    fun selectToTitle(codigo:Int): String? {
+
+        val db:SQLiteDatabase = this.readableDatabase
+        var cursor: Cursor?
+        val selectionArgs = arrayOf(codigo.toString())
+        cursor = db.query(TABELA_CLIENTE,
+            arrayOf(COLUNA_LINHA, COLUNA_TESTAMENTO, COLUNA_LIVRO, COLUNA_CAPITULO, COLUNA_VERSICULO, COLUNA_PALAVRA),
+            "$COLUNA_LINHA = ?",selectionArgs , null, null, null)
+
+        if(cursor != null){
+            cursor.moveToFirst()
+        }
+
+        var cliente = Linha(
+            cursor.getInt(0),
+            cursor.getString(1),
+            cursor.getString(2),
+            cursor.getInt(3),
+            cursor.getInt(4),
+            cursor.getString(5)
+        )
+
+        var TitleToShow:String =  cursor.getString(1) +" - LIVRO: "+ cursor.getString(2) + " - CAPITULO: " + cursor.getInt(3)
+
+        /*var cliente = Linha(
+            cursor.getString(0).toInt(),    // LINHA - INT
+            cursor.getString(1),            // TESTAMENTO - STRING
+            cursor.getString(2),            // LIVRO - STRING
+            cursor.getString(3).toInt(),    // CAPÍTULO - INT
+            cursor.getString(4).toInt(),    // VERSÍCULO - INT
+            cursor.getString(5)             // PALAVRA - STRING
+        )*/
+
+        //return cliente.toString()
+        //return cursor.getString(5)
+        return TitleToShow
     }
 
     companion object{

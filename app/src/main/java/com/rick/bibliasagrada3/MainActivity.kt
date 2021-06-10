@@ -4,7 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +17,7 @@ import java.io.*
 class MainActivity : AppCompatActivity() {
 
     private var mBancoDeDados: BancoDeDados? = null
+    private var inicia_recyclerview: Boolean = true
     val context:Context = this
     var db = BancoDeDados(context)
 
@@ -20,7 +25,39 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.toolbar))
+    }
 
+    override fun onResume() {
+        super.onResume()
+
+        if(inicia_recyclerview){
+            iniciaBancoDeDados()
+            iniciaRcvBiblia()
+            inicia_recyclerview = false
+        }
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflate = menuInflater
+        inflate.inflate(R.menu.menu_do_toolbar, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.icn_palavra ->{ Log.d("item 01", "Primeiro Item")
+                true
+            }
+            R.id.icn_marcador ->{ Log.d("item 02", "Segundo Item")
+                true
+            }
+            R.id.icn_search ->{ Log.d("item 03", "Terceiro Item")
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun iniciaRcvBiblia(){
@@ -28,12 +65,15 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this,RecyclerView.VERTICAL,false)
         val user = ArrayList<Linha>()
 
-        var i=1
+        val txtTitle = findViewById<TextView>(R.id.txtTitle)
+        txtTitle.setSelected(true);
+        txtTitle.text = db.selectToTitle(500)
 
-        while(i<=50){
-            val palavra1:String = db.seleciona(i).toString()
+        var linesToShow=1
+        while(linesToShow<=1000){
+            val palavra1:String = db.selectToRecycler(linesToShow).toString()
             user.add(Linha(1,1," ${palavra1}"))
-            i++
+            linesToShow++
         }
         val adapter = BibliaAdapter(user)
         recyclerView.adapter = adapter

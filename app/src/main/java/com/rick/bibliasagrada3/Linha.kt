@@ -9,7 +9,6 @@ class Linha(var capitulo:Int, var versiculo:Int, var palavra:String) {
                     capitulo: Int,
                     versiculo: Int,
                     palavra: String): this(capitulo, versiculo,palavra)
-
 }
 
 
